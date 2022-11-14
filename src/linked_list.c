@@ -26,20 +26,48 @@ void free_list(node *p) {
 void print_list(node *p) {
   // Add your code for exercise 1
   // There is NO testcode for this
+printf ("the linked list is:");
+if (p!=NULL)
+{
+  printf ("%d", p->value);
+ return print_list (p->next);
+}
+ 
+else
+return ;
+
+
 }
 
 int sum_squares(node *p) {
   // Add your code for excercise 2
   // You can find the tests in tests.cpp
-  return -1;
+if (p==NULL){
+  return 0;
+}
+else
+  return p->value*p->value+sum_squares(p->next);
 }
 
 typedef int (*fn_int_to_int)(int);
 
 node *map(node *p, fn_int_to_int f) { 
   // Add your code for excercise 3
-  
+  if (p==NULL){
+
   return NULL; 
+  }
+  
+
+  //brecursive case
+node *q = malloc(sizeof(node));
+q->value = f(p->value);
+q->next = map(p->next,f);
+return q;
+
+
+
+
 }
 
 int square(int x) { return x * x; }
