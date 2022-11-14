@@ -26,48 +26,47 @@ void free_list(node *p) {
 void print_list(node *p) {
   // Add your code for exercise 1
   // There is NO testcode for this
-printf ("the linked list is:");
-if (p!=NULL)
-{
-  printf ("%d", p->value);
- return print_list (p->next);
-}
- 
-else
-return ;
 
+  //Basecase er, at p == NULL
+  if(p == NULL) {
+    return;
 
+    //Ellers skal jeg print værdien af noden jeg står på og lave recursion, så print_list(p->next).
+  } else {
+    printf("%d ", p->value);
+    print_list(p->next);
+
+    return;
+  }
 }
 
 int sum_squares(node *p) {
   // Add your code for excercise 2
   // You can find the tests in tests.cpp
-if (p==NULL){
-  return 0;
-}
-else
-  return p->value*p->value+sum_squares(p->next);
+  //Basecase er at P == NULL.
+  if(p == NULL){
+    return 0;
+
+  //Ellers skal jeg gange p->value med sig selv og lægge den sammen med recursion steppet sum_squares(p->next).
+  } else {
+    return p->value*p->value + sum_squares(p->next);
+  }
+
+  return -1;
 }
 
 typedef int (*fn_int_to_int)(int);
 
 node *map(node *p, fn_int_to_int f) { 
   // Add your code for excercise 3
-  if (p==NULL){
+  //Basecase er p == NULL.
+  if (p == NULL) {
+    return NULL;
 
-  return NULL; 
-  }
-  
-
-  //brecursive case
-node *q = malloc(sizeof(node));
-q->value = f(p->value);
-q->next = map(p->next,f);
-return q;
-
-
-
-
+    //Ellers skal jeg køre make_node, med f kørt på p->value, som værdien og map(p->next,f) som den næste pointer.
+  } else {
+    return make_node(f(p->value),map(p->next, f));
+  } 
 }
 
 int square(int x) { return x * x; }
