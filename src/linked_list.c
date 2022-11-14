@@ -27,11 +27,11 @@ void print_list(node *p) {
   // Add your code for exercise 1
   // There is NO testcode for this
 
-  //Basecase er, at p == NULL
+  // if/ else statement
   if(p == NULL) {
     return;
 
-    //Ellers skal jeg print værdien af noden jeg står på og lave recursion, så print_list(p->next).
+    //else we print the value of the node we are at, so print_list(p->next).
   } else {
     printf("%d ", p->value);
     print_list(p->next);
@@ -43,11 +43,11 @@ void print_list(node *p) {
 int sum_squares(node *p) {
   // Add your code for excercise 2
   // You can find the tests in tests.cpp
-  //Basecase er at P == NULL.
+  // if else statement, where if p=NULL we return 0
   if(p == NULL){
     return 0;
 
-  //Ellers skal jeg gange p->value med sig selv og lægge den sammen med recursion steppet sum_squares(p->next).
+  // else we time the p-value with it self and add it with sum_squares(p->next)
   } else {
     return p->value*p->value + sum_squares(p->next);
   }
@@ -59,11 +59,11 @@ typedef int (*fn_int_to_int)(int);
 
 node *map(node *p, fn_int_to_int f) { 
   // Add your code for excercise 3
-  //Basecase er p == NULL.
+  //If else statment, where if p is NULL we return NULL
   if (p == NULL) {
     return NULL;
 
-    //Ellers skal jeg køre make_node, med f kørt på p->value, som værdien og map(p->next,f) som den næste pointer.
+    // else we run make_node, where the value is f of p->value and then map (p->next,f) as the next pointer
   } else {
     return make_node(f(p->value),map(p->next, f));
   } 
