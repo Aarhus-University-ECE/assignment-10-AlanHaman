@@ -7,7 +7,7 @@
 
 struct tree_node* Insert(int x, struct tree_node* t) {
 	// Insert item x into the tree t
-
+// if else statment
 	if (t == NULL) {
 		struct tree_node* temp = malloc(sizeof(struct tree_node));
 		temp->item = x;
@@ -127,4 +127,4 @@ int Empty(struct tree_node* t) {
 int Full(struct tree_node* t) {
 	return 0;
 }
-//bla bla
+
