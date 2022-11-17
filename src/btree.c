@@ -126,5 +126,5 @@ int Empty(struct tree_node* t) {
 
 int Full(struct tree_node* t) {
 	return 0;
-}
+} 
 
