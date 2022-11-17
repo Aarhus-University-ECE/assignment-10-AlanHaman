@@ -7,7 +7,7 @@
 
 struct tree_node* Insert(int x, struct tree_node* t) {
 	// Insert item x into the tree t
-
+	// here we have the basecase. when we reach a point where there isnt a node a new will get created
 	if (t == NULL) {
 		struct tree_node* temp = malloc(sizeof(struct tree_node));
 		temp->item = x;
@@ -17,7 +17,7 @@ struct tree_node* Insert(int x, struct tree_node* t) {
 		printf("%d\n", t->item);
 		return temp;
 	}
-
+	//here if the item is the same as another one already, a node will be created
 	if (x == t->item) {
 		struct tree_node* temp = malloc(sizeof(struct tree_node));
 		temp->item = x;
@@ -39,35 +39,37 @@ struct tree_node* Insert(int x, struct tree_node* t) {
 struct tree_node* Remove(int x, struct tree_node* t) {
 	// Remove one item from the tree t
 
-
+// if else statement, where if t (tree) is NULL nothing will be removed
 
 	if (t == NULL) {
 		return t;
 	}
-
+// if the number we want to remove isnt there, the tree will be the same as before
 	if (Contains(x, t) == 0) {
 		return t;
 	} else {
 
 		if (x == t->item) {
-
+		// if the node has no children 
 			if (t->left == NULL && t->right == NULL) {
 				struct tree_node* temp = t->right;
 				free(t);
 				return temp;
 			}
-
+		// if only the node has the right cild
+			
 			if (t->left == NULL && t->right != NULL) {
 				struct tree_node* temp = t->right;
 				free(t);
 				return temp;
 			}
-			/*Same concept, but for left child existing*/
+		// if only the node has left child 
 			if (t->right == NULL && t->left != NULL) {
 				struct tree_node* temp = t->left;
 				free(t);
 				return temp;
 			}
+		// if both cildren exist
 			else if (t->left != NULL && t->right != NULL) {
 				struct tree_node* temp = t->right;
 				while (temp->left != NULL) {
@@ -92,9 +94,7 @@ struct tree_node* Remove(int x, struct tree_node* t) {
 
 int Contains(int x, struct tree_node* t) {
 
-	
-
-	
+	// while loop to check wheater the value we are looking for is in the tree or not
 	while (t != NULL) {
 		printf("%d -> ", t->item); // For aesthetics and testing
 		if (x == t->item) {
