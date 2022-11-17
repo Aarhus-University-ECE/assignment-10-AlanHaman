@@ -13,6 +13,6 @@ int sum_squares(node *p);
 typedef int (*fn_int_to_int)(int);
 node *map(node *p, fn_int_to_int f);
 int square(int x);
-
+int	 sign(int x);
 
 #endif // LINKED_LIST_H
