@@ -35,7 +35,7 @@ struct tree_node* Insert(int x, struct tree_node* t) {
 		return t;
 	}
 }
-
+// struct to remove 
 struct tree_node* Remove(int x, struct tree_node* t) {
 	// Remove one item from the tree t
 
